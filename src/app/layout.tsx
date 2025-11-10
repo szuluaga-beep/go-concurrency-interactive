@@ -17,7 +17,7 @@ const publicSans = Public_Sans({
 
 export const metadata: Metadata = {
   title: "Concurrencia en Go",
-  description: "Recursos y tutoriales para aprender concurrencia en Go.",
+  description: "Recursos y Workshopes para aprender concurrencia en Go.",
 };
 
 export default function RootLayout({

@@ -21,11 +21,11 @@ export default function Home() {
           <div className="space-y-6 rounded-lg border border-border bg-card p-8">
             <div>
               <h2 className="text-2xl font-semibold text-foreground">
-                Bienvenido al tutorial interactivo
+                Bienvenido al Workshop de Concurrencia en Go
               </h2>
               <p className="mt-2 text-muted-foreground">
                 Go es un lenguaje diseñado desde cero para la concurrencia moderna. En este
-                tutorial descubrirás por qué Go es perfecto para aplicaciones concurrentes y cómo
+                Workshop descubrirás por qué Go es perfecto para aplicaciones concurrentes y cómo
                 dominar sus poderosas características.
               </p>
             </div>
@@ -78,7 +78,7 @@ export default function Home() {
           {/* CTA Buttons */}
           <div className="flex flex-col gap-3 sm:flex-row sm:justify-center">
             <Button asChild size="lg" className="bg-primary hover:bg-primary/90">
-              <Link href="/why-go">Comenzar Tutorial</Link>
+              <Link href="/why-go">Comenzar Workshop</Link>
             </Button>
             <Button asChild variant="outline" size="lg">
               <Link href="/visualization">Ver Visualización</Link>
@@ -86,14 +86,10 @@ export default function Home() {
           </div>
 
           {/* Quick Stats */}
-          <div className="grid gap-4 md:grid-cols-3">
+          <div className="grid gap-4 md:grid-cols-2">
             <div className="rounded-lg border border-border bg-card p-4">
               <div className="text-3xl font-bold text-primary">4</div>
               <p className="text-sm text-muted-foreground">Secciones de aprendizaje</p>
-            </div>
-            <div className="rounded-lg border border-border bg-card p-4">
-              <div className="text-3xl font-bold text-accent">100%</div>
-              <p className="text-sm text-muted-foreground">Interactivo</p>
             </div>
             <div className="rounded-lg border border-border bg-card p-4">
               <div className="text-3xl font-bold text-info">∞</div>

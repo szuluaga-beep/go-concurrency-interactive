@@ -1,6 +1,6 @@
-# Concurrencia en Go - Tutorial Interactivo
+# Concurrencia en Go - Workshop Interactivo
 
-Un tutorial interactivo y educativo sobre concurrencia en Go, construido con Next.js y componentes de shadcn.
+Un Workshop interactivo y educativo sobre concurrencia en Go, construido con Next.js y componentes de shadcn.
 
 ## 🎯 Características
 
@@ -130,5 +130,5 @@ MIT
 
 ## 👨‍💻 Autor
 
-Tutorial creado para enseñar concurrencia en Go de forma interactiva.
+Workshop creado para enseñar concurrencia en Go de forma interactiva.
 
