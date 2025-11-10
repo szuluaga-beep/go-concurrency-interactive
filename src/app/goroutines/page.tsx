@@ -1,6 +1,5 @@
 "use client"
 
-import { GoGoroutineSimulator } from "@/components/go-goroutine-simulator"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 
 export default function GoroutinesPage() {
@@ -161,54 +160,59 @@ export default function GoroutinesPage() {
       </div>
 
       <div className="space-y-6">
+
         <Card>
           <CardHeader>
-            <CardTitle>Simulador de Go Goroutines</CardTitle>
-            <CardDescription>
-              Observa cómo Go multiplexea goroutines en OS threads de forma inteligente.
-              Puedes crear muchísimas más goroutines sin los costos de OS threads.
-            </CardDescription>
+            <CardTitle>Ejemplo: Hilos OS vs Goroutines</CardTitle>
+            <CardDescription>Visualización teórica de uso de recursos</CardDescription>
           </CardHeader>
-          <CardContent className="space-y-3">
-            <p className="text-sm text-muted-foreground">
-              Intenta esto:
+          <CardContent>
+            <div className="space-y-4">
+              <div>
+                <div className="mb-2 flex justify-between text-sm">
+                  <span className="font-medium">1,000 OS Threads</span>
+                  <span className="text-muted-foreground">~2 GB de memoria</span>
+                </div>
+                <div className="h-3 overflow-hidden rounded-full bg-red-100 dark:bg-red-950">
+                  <div className="h-full w-full bg-red-500" />
+                </div>
+              </div>
+
+              <div>
+                <div className="mb-2 flex justify-between text-sm">
+                  <span className="font-medium">1,000 Goroutines</span>
+                  <span className="text-muted-foreground">~2 MB de memoria</span>
+                </div>
+                <div className="h-3 overflow-hidden rounded-full bg-green-100 dark:bg-green-950">
+                  <div className="h-full w-1/4 bg-green-500" />
+                </div>
+              </div>
+
+              <div>
+                <div className="mb-2 flex justify-between text-sm">
+                  <span className="font-medium">1,000,000 Goroutines</span>
+                  <span className="text-muted-foreground">~2 GB de memoria</span>
+                </div>
+                <div className="h-3 overflow-hidden rounded-full bg-green-100 dark:bg-green-950">
+                  <div className="h-full w-full bg-green-500" />
+                </div>
+              </div>
+            </div>
+
+            <p className="mt-4 text-xs text-muted-foreground">
+              Go runtime scheduler automáticamente multiplexea goroutines en OS threads disponibles,
+              proporcionando un modelo de programación concurrente ultra-eficiente.
             </p>
-            <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
-              <li>Mantén 4 OS threads (típico en una máquina moderna)</li>
-              <li>Aumenta las goroutines a 50 o más</li>
-              <li>Observa cómo se distribuyen automáticamente</li>
-              <li>Las goroutines se bloquean ocasionalmente simulando I/O</li>
-            </ul>
           </CardContent>
         </Card>
-
-        <GoGoroutineSimulator />
-
-        <Card className="border-l-4 border-purple-500 bg-purple-50 dark:bg-purple-950/20">
+        <Card className="border-l-4 border-purple-500">
           <CardHeader>
-            <CardTitle className="text-base">Ventajas de Goroutines</CardTitle>
+            <CardTitle className="text-base">Por qué Go gana</CardTitle>
           </CardHeader>
-          <CardContent className="space-y-3 text-sm">
-            <div className="space-y-2">
-              <p className="font-medium">Overhead mínimo:</p>
-              <p className="text-muted-foreground">
-                Goroutine: ~2-8 KB | OS Thread: ~1-2 MB
-              </p>
-            </div>
-            <div className="space-y-2">
-              <p className="font-medium">Scheduling inteligente:</p>
-              <p className="text-muted-foreground">
-                El runtime gestiona automáticamente los threads, bloqueando y desbloqueando
-                goroutines según sea necesario.
-              </p>
-            </div>
-            <div className="space-y-2">
-              <p className="font-medium">Escalabilidad:</p>
-              <p className="text-muted-foreground">
-                Puedes crear millones de goroutines en una máquina moderna.
-                Prueba el simulador con 1000+ goroutines.
-              </p>
-            </div>
+          <CardContent className="space-y-2 text-sm">
+            <p>🚀 Millones de goroutines vs cientos de threads</p>
+            <p>💾 2KB por goroutine vs 2MB por OS thread</p>
+            <p>⚡ Runtime automático multiplexea en CPU cores</p>
           </CardContent>
         </Card>
 
@@ -234,57 +238,6 @@ for i := 0; i < 1000; i++ {
         </Card>
       </div>
 
-      {/* Comparativa final */}
-      <Card className="border-t-4 border-orange-500 bg-orange-50 dark:bg-orange-950/20">
-        <CardHeader>
-          <CardTitle>Resumen: OS Threads vs Goroutines</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="border-b">
-                  <th className="text-left py-2 px-2 font-semibold">Aspecto</th>
-                  <th className="text-left py-2 px-2 font-semibold">OS Threads</th>
-                  <th className="text-left py-2 px-2 font-semibold">Goroutines</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y">
-                <tr>
-                  <td className="py-2 px-2">Memoria por unidad</td>
-                  <td className="py-2 px-2">~1-2 MB</td>
-                  <td className="py-2 px-2">~2-8 KB</td>
-                </tr>
-                <tr>
-                  <td className="py-2 px-2">Creación/Destrucción</td>
-                  <td className="py-2 px-2">Lento (ms)</td>
-                  <td className="py-2 px-2">Muy rápido (μs)</td>
-                </tr>
-                <tr>
-                  <td className="py-2 px-2">Context Switching</td>
-                  <td className="py-2 px-2">Lento (~microsegundos)</td>
-                  <td className="py-2 px-2">Ultra rápido (runtime)</td>
-                </tr>
-                <tr>
-                  <td className="py-2 px-2">Cantidad práctica</td>
-                  <td className="py-2 px-2">Cientos</td>
-                  <td className="py-2 px-2">Millones</td>
-                </tr>
-                <tr>
-                  <td className="py-2 px-2">Control</td>
-                  <td className="py-2 px-2">Sistema Operativo</td>
-                  <td className="py-2 px-2">Go Runtime</td>
-                </tr>
-                <tr>
-                  <td className="py-2 px-2">Comunicación</td>
-                  <td className="py-2 px-2">Mutex, Locks</td>
-                  <td className="py-2 px-2">Canales, Mutex</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </CardContent>
-      </Card>
     </div>
   )
 }

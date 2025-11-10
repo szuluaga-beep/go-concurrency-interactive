@@ -1,8 +1,8 @@
 
 import { CPUThreadsVisualizer } from '@/components/cpu-threads-visualizer';
+import { GoGoroutineSimulator } from '@/components/go-goroutine-simulator';
 import { ThreadEducation } from '@/components/thread-education';
-import { ThreadingComparison } from '@/components/threading-comparison';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 export default function ThreadsPage() {
@@ -11,100 +11,71 @@ export default function ThreadsPage() {
             <main className="space-y-8 p-6">
                 {/* Header */}
                 <div className="space-y-2">
-                    <h1 className="text-4xl font-bold tracking-tight">Threads & Concurrencia</h1>
-                    <p className="text-lg text-muted-foreground">
-                        Aprende interactivamente cómo funcionan los threads del CPU, multitarea y cómo Go
-                        maneja la concurrencia de forma superior
+                    <h1 className="text-3xl font-bold tracking-tight">Threads & Concurrencia</h1>
+                    <p className="text-muted-foreground">
+                        Entiende cómo funcionan los threads del CPU y por qué Go es superior.
                     </p>
                 </div>
 
                 {/* Tabs */}
-                <Tabs defaultValue="education" className="w-full">
-                    <TabsList className="grid w-full grid-cols-4">
-                        <TabsTrigger value="education">Conceptos</TabsTrigger>
-                        <TabsTrigger value="comparison">Comparativa</TabsTrigger>
+                <Tabs defaultValue="concepts" className="w-full">
+                    <TabsList className="grid w-full grid-cols-3">
+                        <TabsTrigger value="concepts">Conceptos</TabsTrigger>
                         <TabsTrigger value="cpu-threads">CPU Threads</TabsTrigger>
                     </TabsList>
 
-                    {/* Tab: Educación */}
-                    <TabsContent value="education" className="space-y-6">
+                    {/* Tab: Conceptos */}
+                    <TabsContent value="concepts" className="space-y-6">
                         <ThreadEducation />
+                    </TabsContent>
 
-                        <Card className="border-l-4 border-green-500 bg-green-50 dark:bg-green-950/20">
+                    {/* Tab: CPU Threads */}
+                    <TabsContent value="cpu-threads" className="space-y-6">
+                        <CPUThreadsVisualizer />
+                        
+                        <Card className="border-l-4 border-blue-500">
                             <CardHeader>
-                                <CardTitle className="text-lg">¿Por qué Go es diferente?</CardTitle>
+                                <CardTitle className="text-base">Clave</CardTitle>
                             </CardHeader>
-                            <CardContent className="space-y-3 text-sm">
-                                <p>
-                                    Go fue diseñado desde cero para la programación concurrente. Su sistema de runtime
-                                    proporciona goroutines y canales, permitiendo escribir código concurrente de forma
-                                    simple y elegante.
-                                </p>
-                                <div className="rounded bg-white/50 dark:bg-black/20 p-3 space-y-2">
-                                    <p className="font-medium">Características principales:</p>
-                                    <ul className="list-disc list-inside space-y-1 text-xs">
-                                        <li>Goroutines: Threads ligeros sin el overhead de OS threads</li>
-                                        <li>Canales: Comunicación segura entre goroutines</li>
-                                        <li>Async-await implícito: Sin palabras clave especiales necesarias</li>
-                                        <li>GC optimizado: Garbage collection concurrente y eficiente</li>
-                                    </ul>
-                                </div>
+                            <CardContent className="space-y-2 text-sm">
+                                <p>✓ Más threads = más tareas en paralelo (en multi-core)</p>
+                                <p>✗ Crear OS threads es costoso en memoria</p>
+                                <p>💡 Go resuelve esto con goroutines ligeras</p>
                             </CardContent>
                         </Card>
                     </TabsContent>
 
-                    {/* Tab: Comparativa */}
-                    <TabsContent value="comparison" className="space-y-6">
-                        <ThreadingComparison />
-                    </TabsContent>
-
-                    {/* Tab: CPU Threads */}
-                    <TabsContent value="cpu-threads">
-                        <div className="space-y-6">
-                            <Card>
-                                <CardHeader>
-                                    <CardTitle>Simulador de CPU Threads</CardTitle>
-                                    <CardDescription>
-                                        Observa cómo un CPU con múltiples threads maneja la ejecución de tareas.
-                                        Cada thread del CPU puede ejecutar una tarea a la vez.
-                                    </CardDescription>
-                                </CardHeader>
-                                <CardContent>
-                                    <p className="mb-4 text-sm text-muted-foreground">
-                                        Ajusta el número de threads, agrega tareas y observa cómo se distribuye el trabajo.
-                                        La utilización muestra qué porcentaje del CPU está siendo usado.
-                                    </p>
-                                </CardContent>
-                            </Card>
-
-                            <CPUThreadsVisualizer />
-
-                            <Card className="border-l-4 border-blue-500">
-                                <CardHeader>
-                                    <CardTitle className="text-base">Observaciones importantes</CardTitle>
-                                </CardHeader>
-                                <CardContent className="space-y-2 text-sm">
-                                    <p>
-                                        ✓ Con más threads, el CPU maneja más tareas en paralelo (en máquinas multi-core)
-                                    </p>
-                                    <p>
-                                        ✓ La cola de tareas crece cuando hay más trabajo que capacidad de threads
-                                    </p>
-                                    <p>
-                                        ✗ Crear demasiados OS threads es costoso en memoria y rendimiento
-                                    </p>
-                                    <p>
-                                        ✓ Esto es lo que motiva a lenguajes como Go a usar abstracciones más ligeras
-                                    </p>
-                                </CardContent>
-                            </Card>
-                        </div>
-                    </TabsContent>
-
-
+                    
                 </Tabs>
 
-
+                {/* Comparativa Final */}
+                <Card>
+                    <CardHeader>
+                        <CardTitle className="text-lg">OS Threads vs Goroutines</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                        <div className="grid gap-6 md:grid-cols-2">
+                            <div className="space-y-3">
+                                <h4 className="font-semibold">OS Threads</h4>
+                                <ul className="space-y-1 text-sm text-muted-foreground">
+                                    <li>• Creados por el SO</li>
+                                    <li>• ~2MB memoria cada uno</li>
+                                    <li>• Crear/destruir es lento</li>
+                                    <li>• Máximo: cientos</li>
+                                </ul>
+                            </div>
+                            <div className="space-y-3">
+                                <h4 className="font-semibold text-green-600 dark:text-green-400">Goroutines (Go)</h4>
+                                <ul className="space-y-1 text-sm text-muted-foreground">
+                                    <li>• Creadas por Go runtime</li>
+                                    <li>• ~2KB memoria cada una</li>
+                                    <li>• Crear/destruir es ultra rápido</li>
+                                    <li>• Máximo: millones</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </CardContent>
+                </Card>
             </main>
         </div>
     );

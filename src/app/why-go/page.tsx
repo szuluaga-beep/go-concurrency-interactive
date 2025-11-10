@@ -1,10 +1,33 @@
 "use client"
 
 import ConcurrencySimulator from "@/components/concurrency-simulator"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
 export default function WhyGoPage() {
   return (
     <div className="flex flex-col gap-6 p-8">
+      <Card className="border-l-4 border-green-500 bg-green-50 dark:bg-green-950/20">
+        <CardHeader>
+          <CardTitle className="text-lg">¿Por qué Go es diferente?</CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-3 text-sm">
+          <p>
+            Go fue diseñado desde cero para la programación concurrente. Su sistema de runtime
+            proporciona goroutines y canales, permitiendo escribir código concurrente de forma
+            simple y elegante.
+          </p>
+          <div className="rounded bg-white/50 dark:bg-black/20 p-3 space-y-2">
+            <p className="font-medium">Características principales:</p>
+            <ul className="list-disc list-inside space-y-1 text-xs">
+              <li>Goroutines: Threads ligeros sin el overhead de OS threads</li>
+              <li>Canales: Comunicación segura entre goroutines</li>
+              <li>Async-await implícito: Sin palabras clave especiales necesarias</li>
+              <li>GC optimizado: Garbage collection concurrente y eficiente</li>
+            </ul>
+          </div>
+        </CardContent>
+      </Card>
+      
       <div className="space-y-2">
         <h1 className="text-4xl font-bold text-foreground">¿Por qué Go para Concurrencia?</h1>
         <p className="text-lg text-muted-foreground">
@@ -166,9 +189,9 @@ export default function WhyGoPage() {
           </div>
           <div className="mt-4 p-4 bg-muted rounded-lg">
             <p className="text-sm text-muted-foreground">
-              <strong>Lo importante:</strong> Go puede ejecutar millones de tareas pequeñas al mismo tiempo 
-              usando muy poca memoria. En Python esto es prácticamente imposible debido al GIL. 
-              Aunque JavaScript y Java tienen multi-thread, requieren mucha más memoria y son complicados 
+              <strong>Lo importante:</strong> Go puede ejecutar millones de tareas pequeñas al mismo tiempo
+              usando muy poca memoria. En Python esto es prácticamente imposible debido al GIL.
+              Aunque JavaScript y Java tienen multi-thread, requieren mucha más memoria y son complicados
               de programar. Go simplifica todo esto permitiendo millones de tareas con mínimos recursos.
             </p>
           </div>
@@ -183,6 +206,7 @@ export default function WhyGoPage() {
         </p>
         <ConcurrencySimulator />
       </div>
+
     </div>
   )
 }
