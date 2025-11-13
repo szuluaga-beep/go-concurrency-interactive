@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { BookOpen, Eye, Zap, Waves, Home, Cpu } from "lucide-react";
+import { BookOpen, Eye, Zap, Waves, Home, Cpu, CalendarDays } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -25,6 +25,12 @@ const navItems = [
     title: "Inicio",
     href: "/",
     icon: Home,
+  },
+  {
+    title: "Cronograma",
+    href: "/schedule",
+    icon: CalendarDays,
+    description: "Agenda del workshop de concurrencia",
   },
   {
     title: "Threads & Concurrencia",
