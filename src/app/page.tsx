@@ -1,10 +1,12 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import { Presentation } from "@/components/presentation";
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-background">
+      <Presentation />
       <div className="mx-auto max-w-4xl px-4 py-20 sm:px-6 sm:py-24 lg:px-8">
         <div className="space-y-8 text-center">
           {/* Header */}
@@ -41,7 +43,7 @@ export default function Home() {
           <div className="grid gap-6 md:grid-cols-2">
             <div className="space-y-3 rounded-lg border border-border bg-card p-6">
               <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
-                <span className="text-2xl">�</span>
+                <span className="text-2xl">🧵</span>
               </div>
               <h3 className="text-lg font-semibold text-foreground">
                 Threads & Concurrencia
@@ -54,7 +56,7 @@ export default function Home() {
 
             <div className="space-y-3 rounded-lg border border-border bg-card p-6">
               <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
-                <span className="text-2xl">�📚</span>
+                <span className="text-2xl">📚</span>
               </div>
               <h3 className="text-lg font-semibold text-foreground">
                 ¿Por qué Go?
