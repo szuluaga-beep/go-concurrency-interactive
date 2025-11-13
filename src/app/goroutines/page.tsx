@@ -48,14 +48,14 @@ export default function GoroutinesPage() {
             <div className="text-foreground" />
             <div className="text-foreground">
               <span className="text-primary">func</span>{" "}
-              <span className="text-accent">main</span>() {"{"}
+              <span className="text-primary">main</span>() {"{"}
             </div>
             <div className="ml-4 text-muted-foreground">
               <span className="text-primary">go</span>{" "}
               <span className="text-foreground">greet</span>("Mundo")
             </div>
             <div className="ml-4 text-foreground">
-              fmt.<span className="text-accent">Println</span>("Hola")
+              fmt.<span className="text-primary">Println</span>("Hola")
             </div>
             <div className="text-foreground">{"}"}</div>
           </div>

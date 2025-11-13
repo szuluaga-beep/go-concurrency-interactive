@@ -1,10 +1,12 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import { Presentation } from "@/components/presentation";
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-background">
+      <Presentation />
       <div className="mx-auto max-w-4xl px-4 py-20 sm:px-6 sm:py-24 lg:px-8">
         <div className="space-y-8 text-center">
           {/* Header */}
@@ -38,10 +40,23 @@ export default function Home() {
           </div>
 
           {/* Features */}
-          <div className="grid gap-6 md:grid-cols-2">
-            <div className="space-y-3 rounded-lg border border-border bg-card p-6">
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <div className="space-y-3 rounded-lg border border-border bg-card p-6 transition-shadow hover:shadow-md">
+              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-accent/10">
+                <span className="text-2xl">📅</span>
+              </div>
+              <h3 className="text-lg font-semibold text-foreground">
+                Cronograma
+              </h3>
+              <p className="text-sm text-muted-foreground">
+                Agenda completa del workshop con timer sincronizado para seguir
+                el progreso en tiempo real
+              </p>
+            </div>
+
+            <div className="space-y-3 rounded-lg border border-border bg-card p-6 transition-shadow hover:shadow-md">
               <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
-                <span className="text-2xl">�</span>
+                <span className="text-2xl">🧵</span>
               </div>
               <h3 className="text-lg font-semibold text-foreground">
                 Threads & Concurrencia
@@ -52,9 +67,22 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="space-y-3 rounded-lg border border-border bg-card p-6">
+            <div className="space-y-3 rounded-lg border border-border bg-card p-6 transition-shadow hover:shadow-md">
+              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-red-500/10">
+                <span className="text-2xl">⚠️</span>
+              </div>
+              <h3 className="text-lg font-semibold text-foreground">
+                Problemas de Concurrencia
+              </h3>
+              <p className="text-sm text-muted-foreground">
+                Deadlock, livelock, starvation y otros desafíos comunes con sus
+                soluciones
+              </p>
+            </div>
+
+            <div className="space-y-3 rounded-lg border border-border bg-card p-6 transition-shadow hover:shadow-md">
               <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
-                <span className="text-2xl">�📚</span>
+                <span className="text-2xl">📚</span>
               </div>
               <h3 className="text-lg font-semibold text-foreground">
                 ¿Por qué Go?
@@ -65,7 +93,7 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="space-y-3 rounded-lg border border-border bg-card p-6">
+            <div className="space-y-3 rounded-lg border border-border bg-card p-6 transition-shadow hover:shadow-md">
               <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-accent/10">
                 <span className="text-2xl">👀</span>
               </div>
@@ -74,11 +102,11 @@ export default function Home() {
               </h3>
               <p className="text-sm text-muted-foreground">
                 Ve cómo funciona la concurrencia con visualizaciones
-                interactivas
+                interactivas en tiempo real
               </p>
             </div>
 
-            <div className="space-y-3 rounded-lg border border-border bg-card p-6">
+            <div className="space-y-3 rounded-lg border border-border bg-card p-6 transition-shadow hover:shadow-md">
               <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-info/10">
                 <span className="text-2xl">⚡</span>
               </div>
@@ -91,7 +119,7 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="space-y-3 rounded-lg border border-border bg-card p-6">
+            <div className="space-y-3 rounded-lg border border-border bg-card p-6 transition-shadow hover:shadow-md">
               <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
                 <span className="text-2xl">📡</span>
               </div>
@@ -111,10 +139,10 @@ export default function Home() {
               size="lg"
               className="bg-primary hover:bg-primary/90"
             >
-              <Link href="/threads">Entender Threads</Link>
+              <Link href="/schedule">Ver Cronograma</Link>
             </Button>
             <Button asChild variant="outline" size="lg">
-              <Link href="/why-go">Workshop</Link>
+              <Link href="/threads">Comenzar Workshop</Link>
             </Button>
           </div>
         </div>
