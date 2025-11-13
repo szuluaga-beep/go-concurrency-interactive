@@ -14,8 +14,16 @@ export default function SchedulePage() {
       type: "theory",
     },
     {
-      id: "why-go",
+      id:"problems-with-concurrency",
       time: "11:10 - 11:20",
+      title: "Problemas con la Concurrencia",
+      description:
+        "Condiciones de carrera, deadlocks y otros desafíos comunes en programación concurrente",
+      type: "theory",
+    },
+    {
+      id: "why-go",
+      time: "11:20 - 11:25",
       title: "¿Por qué Go?",
       description:
         "Ventajas de Go para programación concurrente y su modelo de concurrencia",
@@ -23,7 +31,7 @@ export default function SchedulePage() {
     },
     {
       id: "visualization",
-      time: "11:20 - 11:30",
+      time: "11:25 - 11:30",
       title: "Visualización Interactiva",
       description:
         "Exploración de simuladores de concurrencia y ejercicios prácticos",

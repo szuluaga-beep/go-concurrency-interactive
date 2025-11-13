@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { BookOpen, Eye, Zap, Waves, Home, Cpu, CalendarDays } from "lucide-react";
+import { BookOpen, Eye, Zap, Waves, Home, Cpu, CalendarDays, AlertTriangle } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -37,6 +37,12 @@ const navItems = [
     href: "/threads",
     icon: Cpu,
     description: "Entiende cómo funcionan los threads del CPU",
+  },
+  {
+    title: "Problemas de Concurrencia",
+    href: "/problems",
+    icon: AlertTriangle,
+    description: "Deadlock, livelock, starvation y sus soluciones",
   },
   {
     title: "¿Por qué Go?",
