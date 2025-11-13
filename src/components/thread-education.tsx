@@ -86,12 +86,44 @@ export function ThreadEducation() {
                 </p>
                 <ConcurrencyVisualizer />
               </div>
-              <p className="text-sm text-muted-foreground">
-                <strong>Concurrencia:</strong> Es sobre la estructura del
-                programa. Múltiples tareas progresan independientemente,
-                coordinándose a través de canales. Ideal para I/O (web,
-                archivos, base de datos).
-              </p>
+
+              <div className="space-y-3">
+                <div>
+                  <p className="text-sm font-semibold mb-1">
+                    ¿Qué es la Concurrencia?
+                  </p>
+                  <p className="text-sm text-muted-foreground">
+                    Es la capacidad de <strong>estructurar un programa</strong> para que múltiples
+                    tareas <strong>progresen de forma independiente</strong>, aunque no necesariamente
+                    se ejecuten al mismo tiempo. Es como un chef que cocina varios platillos:
+                    mientras algo hierve, puede picar verduras; mientras el horno calienta, puede
+                    preparar la salsa.
+                  </p>
+                </div>
+
+                <div>
+                  <p className="text-sm font-semibold mb-1">
+                    Context Switching en acción
+                  </p>
+                  <p className="text-sm text-muted-foreground">
+                    Con un solo core, el CPU cambia rápidamente entre procesos (cada ~300ms en la
+                    visualización). El proceso activo (amarillo) ejecuta un poco de trabajo, luego
+                    el CPU cambia al siguiente. Aunque solo uno ejecuta a la vez, todos avanzan
+                    "simultáneamente" desde nuestra perspectiva.
+                  </p>
+                </div>
+
+                <div>
+                  <p className="text-sm font-semibold mb-1">
+                    ¿Cuándo usar Concurrencia?
+                  </p>
+                  <p className="text-sm text-muted-foreground">
+                    <strong>Ideal para tareas I/O-bound</strong> (operaciones que esperan): peticiones
+                    web, lectura de archivos, consultas a base de datos. Mientras un proceso espera
+                    respuesta, otro puede trabajar. No necesitas múltiples cores para beneficiarte.
+                  </p>
+                </div>
+              </div>
             </TabsContent>
 
             <TabsContent value="parallelism" className="space-y-4">
@@ -105,11 +137,45 @@ export function ThreadEducation() {
                 </p>
                 <ParallelismVisualizer />
               </div>
-              <p className="text-sm text-muted-foreground">
-                <strong>Paralelismo:</strong> Es sobre la ejecución. Múltiples
-                tareas se ejecutan literalmente al mismo tiempo en diferentes
-                cores. Ideal para cálculo intensivo (CPU-bound).
-              </p>
+
+              <div className="space-y-3">
+                <div>
+                  <p className="text-sm font-semibold mb-1">
+                    ¿Qué es el Paralelismo?
+                  </p>
+                  <p className="text-sm text-muted-foreground">
+                    Es la capacidad de <strong>ejecutar múltiples tareas literalmente al mismo
+                    tiempo</strong> usando diferentes cores del CPU. Es como tener 4 chefs en la
+                    cocina: cada uno puede trabajar en un platillo diferente simultáneamente.
+                    Mientras el chef 1 pica verduras, el chef 2 cocina pasta, el chef 3 prepara
+                    la salsa, y el chef 4 hornea el pan, todo al mismo tiempo.
+                  </p>
+                </div>
+
+                <div>
+                  <p className="text-sm font-semibold mb-1">
+                    Ejecución simultánea real
+                  </p>
+                  <p className="text-sm text-muted-foreground">
+                    Cada proceso (P0, P1, P2, P3) tiene su propio core dedicado. No hay context
+                    switching ni esperas. Todos ejecutan continuamente y avanzan a su máxima
+                    velocidad. Las barras de progreso avanzan simultáneamente porque realmente
+                    están trabajando en paralelo.
+                  </p>
+                </div>
+
+                <div>
+                  <p className="text-sm font-semibold mb-1">
+                    ¿Cuándo usar Paralelismo?
+                  </p>
+                  <p className="text-sm text-muted-foreground">
+                    <strong>Ideal para tareas CPU-bound</strong> (cálculo intensivo): procesamiento
+                    de imágenes, cálculos matemáticos complejos, compilación de código, renderizado
+                    de video. Aquí sí necesitas múltiples cores físicos para obtener el beneficio
+                    de velocidad.
+                  </p>
+                </div>
+              </div>
             </TabsContent>
           </Tabs>
         </CardContent>
