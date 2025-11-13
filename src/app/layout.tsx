@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import { Public_Sans } from "next/font/google";
 import "./globals.css";
 import { AppSidebar } from "@/components/app-sidebar";
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import { SidebarProvider } from "@/components/ui/sidebar";
 import { ThemeProvider } from "@/components/theme-provider";
+import { LayoutHeader } from "@/components/layout-header";
+import { TimerProvider } from "@/contexts/timer-context";
 
 const publicSans = Public_Sans({
   subsets: ["latin"],
@@ -30,18 +32,15 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <SidebarProvider>
-            <AppSidebar />
-            <div className="w-full">
-              <div className="flex items-center gap-2 border-b border-border bg-card p-2">
-                <SidebarTrigger />
-                <h1 className="font-semibold text-foreground">
-                  Concurrencia en Go
-                </h1>
+          <TimerProvider>
+            <SidebarProvider>
+              <AppSidebar />
+              <div className="w-full">
+                <LayoutHeader />
+                <main className="flex-1">{children}</main>
               </div>
-              <main className="flex-1">{children}</main>
-            </div>
-          </SidebarProvider>
+            </SidebarProvider>
+          </TimerProvider>
         </ThemeProvider>
       </body>
     </html>

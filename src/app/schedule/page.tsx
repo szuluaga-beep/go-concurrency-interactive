@@ -2,6 +2,7 @@
 
 import { Card } from "@/components/ui/card";
 import { Calendar, Clock } from "lucide-react";
+import { ScheduleTimer } from "@/components/schedule-timer";
 
 export default function SchedulePage() {
   const scheduleItems = [
@@ -128,6 +129,9 @@ export default function SchedulePage() {
             </div>
           </div>
         </Card>
+
+        {/* Timer */}
+        <ScheduleTimer />
 
         {/* Legend */}
         <div className="flex flex-wrap gap-4">
